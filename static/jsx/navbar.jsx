@@ -14,9 +14,9 @@ var LeftNav = React.createClass({
 			<div className="left-nav" >
 				<div className="round-icon add-tweet" ><i className="fa fa-pencil"></i></div>
 				<div className="line"></div>
-				<div className="round-icon notification"><i className="fa fa-bell-o" ></i></div>
-				<div className="round-icon messages" ><i className="fa fa-envelope-o" ></i></div>
-				<div className="round-icon tag" ><i className="fa fa-hashtag" ></i></div>
+				<div className="round-icon dummy notification"><i className="fa fa-bell-o" ></i></div>
+				<div className="round-icon dummy messages" ><i className="fa fa-envelope-o" ></i></div>
+				<div className="round-icon dummy tag" ><i className="fa fa-hashtag" ></i></div>
 			</div>
 		);
 	}
@@ -37,7 +37,7 @@ var RightNav = React.createClass({
 		return (
 			<div className="right-nav">
 				<Search />
-				<img className="profile-image" src="https://dealermesh.com/images/profile/michael-asmar.jpg" />
+				<img className="profile-image" src="static/img/nav-profile.jpg" />
 			</div>
 		);
 	}

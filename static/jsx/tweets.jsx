@@ -68,7 +68,7 @@ var Tweet = React.createClass({
 				<div className="right-content-pane">
 					<div className="author-info" >
 						<div className='author-name'>{object.author}</div>
-						<div className='author-handle'>{object.handle}</div>
+						<div className='author-handle'>@{object.handle}</div>
 						<div className='author-time'>{object.time}</div>
 					</div>
 					{(object.content==null || object.content==='null') ? 
@@ -77,14 +77,14 @@ var Tweet = React.createClass({
 						<div className="tweet-text" >{object.content}</div>
 					}
 					<div className="card-icons">
-						<i className="reply"></i>
-						<i className="star"></i>
-						<div className="retweet">
-							<i className="retweet-icon" ></i>
+						<i className="param reply fa fa-share"></i>
+						<i className=" param star fa fa-star"></i>
+						<div className="param retweet">
+							<i className="retweet-icon fa fa-refresh" ></i>
 							{object.reposts}
 						</div>
-						<i className="more"></i>
-						<i className="enlarge"></i>
+						<i className="param more fa fa-ellipsis-h"></i>
+						<i className="param expand fa fa-expand"></i>
 					</div>
 				</div>
 			</div>
@@ -129,14 +129,14 @@ var Tweets = React.createClass({
 	},
 	componentDidMount: function(){
 		var that = this;
-		/*window.addEventListener('scroll',function(){
+		window.addEventListener('scroll',function(){
 			if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 				var new_posts = getRandomTweets(2);
 		        that.setState ({
-					posts: that.state.posts.splice().concat(new_posts)
+					posts: that.state.posts.concat(new_posts)
 				});
 		    }
-		});*/
+		});
 	},
 	componentWillUnmount: function(){
 		window.removeEventListener('scroll');

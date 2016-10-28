@@ -23,17 +23,17 @@ var LeftNav = React.createClass({
 			React.createElement("div", { className: "line" }),
 			React.createElement(
 				"div",
-				{ className: "round-icon notification" },
+				{ className: "round-icon dummy notification" },
 				React.createElement("i", { className: "fa fa-bell-o" })
 			),
 			React.createElement(
 				"div",
-				{ className: "round-icon messages" },
+				{ className: "round-icon dummy messages" },
 				React.createElement("i", { className: "fa fa-envelope-o" })
 			),
 			React.createElement(
 				"div",
-				{ className: "round-icon tag" },
+				{ className: "round-icon dummy tag" },
 				React.createElement("i", { className: "fa fa-hashtag" })
 			)
 		);
@@ -60,7 +60,7 @@ var RightNav = React.createClass({
 			"div",
 			{ className: "right-nav" },
 			React.createElement(Search, null),
-			React.createElement("img", { className: "profile-image", src: "https://dealermesh.com/images/profile/michael-asmar.jpg" })
+			React.createElement("img", { className: "profile-image", src: "static/img/nav-profile.jpg" })
 		);
 	}
 });

@@ -94,6 +94,7 @@ var Tweet = React.createClass({
 					React.createElement(
 						'div',
 						{ className: 'author-handle' },
+						'@',
 						object.handle
 					),
 					React.createElement(
@@ -110,16 +111,16 @@ var Tweet = React.createClass({
 				React.createElement(
 					'div',
 					{ className: 'card-icons' },
-					React.createElement('i', { className: 'reply' }),
-					React.createElement('i', { className: 'star' }),
+					React.createElement('i', { className: 'param reply fa fa-share' }),
+					React.createElement('i', { className: ' param star fa fa-star' }),
 					React.createElement(
 						'div',
-						{ className: 'retweet' },
-						React.createElement('i', { className: 'retweet-icon' }),
+						{ className: 'param retweet' },
+						React.createElement('i', { className: 'retweet-icon fa fa-refresh' }),
 						object.reposts
 					),
-					React.createElement('i', { className: 'more' }),
-					React.createElement('i', { className: 'enlarge' })
+					React.createElement('i', { className: 'param more fa fa-ellipsis-h' }),
+					React.createElement('i', { className: 'param expand fa fa-expand' })
 				)
 			)
 		);
@@ -163,14 +164,14 @@ var Tweets = React.createClass({
 	},
 	componentDidMount: function componentDidMount() {
 		var that = this;
-		/*window.addEventListener('scroll',function(){
-  	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-  		var new_posts = getRandomTweets(2);
-          that.setState ({
-  			posts: that.state.posts.splice().concat(new_posts)
-  		});
-      }
-  });*/
+		window.addEventListener('scroll', function () {
+			if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+				var new_posts = getRandomTweets(2);
+				that.setState({
+					posts: that.state.posts.concat(new_posts)
+				});
+			}
+		});
 	},
 	componentWillUnmount: function componentWillUnmount() {
 		window.removeEventListener('scroll');

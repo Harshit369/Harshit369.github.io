@@ -1,3 +1,100 @@
+@font-face {
+font-family: 'Source Sans Pro';
+src:
+    local('Source Sans Pro'),
+    local('SourceSansPro-ExtraLight'),
+    url('../fonts/SourceSansPro-ExtraLight.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+font-family: 'Source Sans Pro';
+src:
+    local('Source Sans Pro'),
+    local('SourceSansPro-Light'),
+    url('../fonts/SourceSansPro-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+font-family: 'Source Sans Pro';
+src:
+    local('Source Sans Pro'),
+    local('SourceSansPro-Regular'),
+    url('../fonts/SourceSansPro-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+font-family: 'Source Sans Pro';
+src:
+    local('Source Sans Pro'),
+    local('SourceSansPro-Bold'),
+    url('../fonts/SourceSansPro-Bold.ttf');
+    font-weight: 600;
+}
+/* source sans font declararions */
+
+$break-width:600px;
+
+/* keygrame declerations */
+@mixin keyframes( $animationName )
+{
+    @-webkit-keyframes $animationName {
+        @content;
+    }
+    @-moz-keyframes $animationName {
+        @content;
+    }
+    @-o-keyframes $animationName {
+        @content;
+    }
+    @keyframes $animationName {
+        @content;
+    }
+}
+
+@keyframes up_transition {
+	50% {
+		font-size: 50px;
+	}
+	100% {
+		font-size: 30px;
+	}
+}
+
+@keyframes fancy_border {
+    0% {
+    	border:0px;
+    }
+    25% {
+    	border-top: 0px;
+    	border-bottom: 0px;
+    	border-left: 0px;
+    	border-right: 1px solid #0084b4;
+    }
+    50% {
+    	border-top: 0px;
+    	border-left: 0px;
+    	border-bottom: 1px solid #0084b4;
+    	border-right: 0px;
+    }
+    75% {
+    	border-top: 0px;
+    	border-left: 1px solid #0084b4;
+    	border-bottom: 0px;
+    	border-right: 0px;
+    }
+    100% {
+    	border-top: 1px solid #0084b4;
+    	border-left: 0px;
+    	border-bottom: 0px;
+    	border-right: 0px;
+    }
+}
+/* ------------------------------- */
+
+
 body {
 	margin: 0px;
 	padding: 0px;
@@ -10,17 +107,32 @@ body {
 		.main-content {
 
 			.navbar {
-				background: white;
+				perspective: 1000;
+				-webkit-perspective: 1000;
+				z-index: 1000;
+				position: fixed;
+				background: #fffbf5;
 				width: 100%;
 				height: 55px;
 				display: flex;
 				justify-content: space-between;
+
+				@media screen and (max-width: $break-width) {
+					flex-wrap:wrap;
+				}
 
 				.left-nav {
 					display: flex;
 					flex-shrink:0;
 					width: 250px;
 					justify-content: space-around;
+
+					@media screen and (max-width: $break-width) {
+						order:2;
+						width: 100%;
+						background: #fffbf5;
+						height: 50px;
+					}
 
 					.round-icon {
 						cursor: pointer;
@@ -40,6 +152,13 @@ body {
 						}
 					}
 
+					.dummy {
+						&:hover {
+							animation: fancy_border 1s infinite;
+							@include keyframes(fancy_border);
+						}
+					}
+
 					.add-tweet {
 						border: none;
 						color: white;
@@ -49,22 +168,45 @@ body {
 
 					.line {
 						border-right: 1px solid #ddd;
+						@media screen and (max-width: $break-width) {
+							display: none;
+						}
 					}
 				}
 
 				.logo {
+					cursor: pointer;
 					display: flex;
 					width: 70%;
 					justify-content: center;
 					border-bottom: .8px solid #ddd;
 					i {
+						&:hover {
+							animation: up_transition 1s ease;
+							@include keyframes(up_transition);
+						}
 						align-self: center;
 						font-size: 30px;
 						color: #0084b4
 					}
+
+					@media screen and (max-width: $break-width) {
+						order:1;
+						width: 100%;
+						background: #fffbf5;
+						height: 50px;
+						border: none;
+					}
 				}
 
 				.right-nav {
+
+					@media screen and (max-width: $break-width) {
+						order:3;
+						width: 100%;
+						background: #fffbf5;
+						height: 50px;
+					}
 					display: flex;
 					flex-shrink:0;
 					width: 250px;
@@ -74,7 +216,7 @@ body {
 						background-size: 14px;
 						background-color: rgba(255,255,255,.2);
 						align-self: center;
-						height: 25px;
+						height: 30px;
 						width: 170px;
 						outline: none;
 						border-radius: 15px;
@@ -97,14 +239,19 @@ body {
 				justify-content: center;
 				flex-wrap : wrap;
 				.tweet-counter {
-					background: white;
-					margin-top: 50px;
+					@media screen and (max-width: $break-width) {
+						margin-top: 140px;
+					}
+					box-shadow: -.5px -.8px 5px .6px #ddd;
+					margin-top: 100px;
+					background: #fffbf5;
 					display: flex;
 					height: 80px;
 					width: 700px;
 					justify-content: space-between;
 
 					.counter-item {
+						cursor: pointer;
 						display: flex;
 						width: 23%;
 						text-align: center;
@@ -113,9 +260,14 @@ body {
 						flex-wrap:wrap;
 
 						.count-type {
+							@media screen and (max-width: 400px) {
+								font-size: 10px;
+							}
+							font-family: 'Source Sans Pro',sans-serif;
 							margin-top: auto;
-							font-size: 13px;
-							font-weight: 50;
+							color: #c6c1b0;
+							font-size: 15px;
+							font-weight: 300;
 							width: 100%;
 						}
 
@@ -125,6 +277,23 @@ body {
 							font-weight: 700;
 							width: 100%;
 						}
+
+						/* &:after{
+							position: absolute;
+							top:6px;
+							content: ' ';
+							display: block;
+							height: 4px;
+							background-color: #0084b4;
+							width: 0%;
+						}
+
+						&:hover:after{
+							transition: width 0.6s cubic-bezier(0.22, 0.61,0.36,1);
+							-webkit-transition: width 0.6s cubic-bezier(0.22, 0.61,0.36,1);
+							width: 100%;
+						} */
+
 					}
 
 					.selected {
@@ -133,14 +302,103 @@ body {
 				}
 
 				.tweets {
-					background: white;
+					perspective: 5000px;
+					-webkit-perspective: 5000px;
+					background: #fffbf5;
 					margin-top: 50px;
 					width: 700px;
 
 					.tweet {
+						box-shadow: -.6px -.8px 2px .6px #ddd;
 						padding: 20px auto;
 						display: flex;
-						border-bottom: .8px solid #ddd;
+						border-bottom: .5px solid #eee;
+						justify-content:space-around;
+						padding-top: 30px;
+						padding-bottom: 30px;
+
+						&:hover {
+							transition: transform 0.3s cubic-bezier(0.22, 0.61,0.36,1);
+							-webkit-transition: transform 0.3s cubic-bezier(0.22, 0.61,0.36,1);
+							transform: translateZ(30px);
+							-webkit-transform: translateZ(30px);
+						}
+
+						.left-pic-pane {
+							display: flex;
+							width: 10%;
+							justify-content:center;
+
+							img {
+								height:50px;
+								width: 50px;
+								border-radius: 50%;
+							}
+						}
+						.right-content-pane {
+							display: flex;
+							flex-wrap: wrap;
+							width: 80%;
+
+							.author-info {
+								display: flex;
+								margin-bottom: 10px;
+								width: 100%;
+								.author-name {
+									font-family: 'Source Sans Pro',sans-serif;
+									font-weight: 600;
+								}
+
+								.author-handle {
+									font-family: 'Source Sans Pro',sans-serif;
+									font-weight: 300;
+									margin-left: 10px;
+									color: #c6c1b0;
+								}
+
+								.author-time {
+									margin-left: auto;
+									right: 0px;
+									color: #c6c1b0;
+								}
+
+							}
+
+							.tweet-text {
+								font-family: 'Source Sans Pro',sans-serif;
+								font-weight: 400;
+								margin-bottom: 10px;
+							}
+
+							.tweet-media {
+								margin-bottom: 10px;
+								max-height: 400px;
+								width: 100%;
+								height: auto;
+							}
+
+							.card-icons {
+								display: flex;
+								color: #c6c1b0;
+								width: 100%;
+								.expand {
+									margin-left: auto;
+								}
+
+								.param {
+									cursor: pointer;
+									margin-right: 10px;
+
+									i {
+										margin-right: 4px;
+									}
+
+									&:hover {
+										color:#0084b4;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
